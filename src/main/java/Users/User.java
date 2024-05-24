@@ -3,10 +3,12 @@ package Users;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigInteger;
+
 @Getter
 @Setter
-public class Users {
-    public long id;
+public class User {
+    public BigInteger id;
     public String username;
     public String firstName;
     public String lastName;
@@ -15,8 +17,8 @@ public class Users {
     public Address address;
     public Card card;
 
-    public Users(
-            long id,
+    public User(
+            BigInteger id,
             String username,
             String firstName,
             String lastName,
