@@ -6,9 +6,17 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Address {
-    public String streetName;
-    public String number;
-    public String city;
-    public String country;
-    public String zipcode;
+    private String streetName;
+    private String number;
+    private String city;
+    private String country;
+    private String zipcode;
+
+    public Address(String streetName, String number, String city, String country, String zipcode) {
+        this.streetName = streetName;
+        this.number = number;
+        this.city = city;
+        this.country = country;
+        this.zipcode = zipcode;
+    }
 }

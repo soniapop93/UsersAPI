@@ -8,7 +8,13 @@ import java.util.Date;
 @Getter
 @Setter
 public class Card {
-    public long id;
-    public String cardNumber;
-    Date expirationDate;
+    private long id;
+    private String cardNumber;
+    private Date expirationDate;
+
+    public Card(long id, String cardNumber, Date expirationDate) {
+        this.id = id;
+        this.cardNumber = cardNumber;
+        this.expirationDate = expirationDate;
+    }
 }
