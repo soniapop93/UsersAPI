@@ -29,7 +29,7 @@ public class DatabaseLogic {
 
     private void createTableUsers() {
         String strSql = String.format("CREATE TABLE IF NOT EXISTS %s (" +
-                "id BIGINT PRIMARY KEY AUTOINCREMENT, " +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "username TEXT, " +
                 "firstName TEXT, " +
                 "lastName TEXT, " +

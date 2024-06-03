@@ -8,14 +8,14 @@ import java.math.BigInteger;
 @Getter
 @Setter
 public class User {
-    public BigInteger id;
-    public String username;
-    public String firstName;
-    public String lastName;
-    public String phoneNumber;
-    public String email;
-    public Address address;
-    public Card card;
+    private BigInteger id;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
+    private String email;
+    private Address address;
+    private Card card;
 
     public User(
             BigInteger id,
