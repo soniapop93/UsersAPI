@@ -1,6 +1,7 @@
 package Users;
 
 import Database.DatabaseLogic;
+import org.json.JSONObject;
 
 import java.math.BigInteger;
 import java.sql.ResultSet;

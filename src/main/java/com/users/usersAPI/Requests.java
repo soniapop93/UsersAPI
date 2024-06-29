@@ -40,7 +40,19 @@ public class Requests {
 
     @PostMapping("/addNewUser")
     public ResponseEntity<?> addUser(@RequestBody String body) {
-        return new ResponseEntity<>(body, HttpStatus.OK);
-        // TODO: finish it
+        boolean validJson = JsonConverter.checkJsonIsValidAddNewUser(body);
+
+        if (validJson) {
+            // TODO: finish to add new user in database
+
+
+            return new ResponseEntity<>(body, HttpStatus.OK);
+        }
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("status", "ERROR - JSON Body not valid!!!");
+
+        return new ResponseEntity<>(jsonObject.toMap(), HttpStatus.BAD_REQUEST);
+
     }
 }

@@ -37,4 +37,110 @@ public class JsonConverter {
 
         return jsonObject;
     }
+
+    public static boolean checkJsonIsValidAddNewUser (String body) {
+        JSONObject jsonBody = new JSONObject(body);
+        if (!jsonBody.has("user")) {
+            return false;
+        }
+
+        JSONObject jsonObjectUser = jsonBody.getJSONObject("user");
+
+        if (!jsonObjectUser.has("username")) {
+            return false;
+        }
+
+        if (!jsonObjectUser.has("firstName")) {
+            return false;
+        }
+
+        if (!jsonObjectUser.has("lastName")) {
+            return false;
+        }
+
+        if (!jsonObjectUser.has("phoneNumber")) {
+            return false;
+        }
+
+        if (!jsonObjectUser.has("email")) {
+            return false;
+        }
+
+        if (!jsonObjectUser.has("address")) {
+            return false;
+        }
+
+        JSONObject jsonObjectAddress = jsonObjectUser.getJSONObject("address");
+
+        if (!jsonObjectAddress.has("streetName")) {
+            return false;
+        }
+
+        if (!jsonObjectAddress.has("number")) {
+            return false;
+        }
+
+        if (!jsonObjectAddress.has("city")) {
+            return false;
+        }
+
+        if (!jsonObjectAddress.has("country")) {
+            return false;
+        }
+
+        if (!jsonObjectAddress.has("zipcode")) {
+            return false;
+        }
+
+        if (!jsonObjectUser.has("card")) {
+            return false;
+        }
+
+        JSONObject jsonObjectCard = jsonObjectUser.getJSONObject("card");
+
+        if (!jsonObjectCard.has("id")) {
+            return false;
+        }
+
+        if (!jsonObjectCard.has("cardNumber")) {
+            return false;
+        }
+
+        if (!jsonObjectCard.has("expirationDate")) {
+            return false;
+        }
+
+        return true;
+    }
+
+    // TODO: delete later after testing
+//    public String test () {
+//        JSONObject jsonObject = new JSONObject();
+//
+//        JSONObject jAddress = new JSONObject();
+//        jAddress.put("streetName", "test");
+//        jAddress.put("number", "test");
+//        jAddress.put("city", "test");
+//        jAddress.put("country", "test");
+//        jAddress.put("zipcode", "test");
+//
+//        JSONObject jCard = new JSONObject();
+//        jCard.put("id", "test");
+//        jCard.put("cardNumber", "test");
+//        jCard.put("expirationDate", "test");
+//
+//
+//        JSONObject jUser = new JSONObject();
+//        jUser.put("username", "test username");
+//        jUser.put("firstName", "test");
+//        jUser.put("lastName", "test");
+//        jUser.put("phoneNumber", "");
+//        jUser.put("email", "test");
+//        jUser.put("address", jAddress);
+//        jUser.put("card", jCard);
+//
+//        jsonObject.put("user", jUser);
+//
+//        return jsonObject.toString();
+//    }
 }
