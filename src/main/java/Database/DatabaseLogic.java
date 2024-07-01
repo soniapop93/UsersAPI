@@ -1,4 +1,6 @@
 package Database;
+import Users.User;
+
 import java.math.BigInteger;
 import java.sql.*;
 import java.util.Map;
@@ -73,5 +75,28 @@ public class DatabaseLogic {
         ResultSet result = executeStatementQuery(strSql);
 
         return result;
+    }
+
+    public void addNewUser(User user) {
+        String strSql = String.format("INSERT INTO %s " +
+                "(" + "username, " +
+                "firstName, " +
+                "lastName, " +
+                "phoneNumber, " +
+                "email, " +
+                "address, " +
+                "card) VALUES " +
+                "('%s', '%s', '%s', '%s', '%s', '%s', '%s');",
+                tableNames.get("users"),
+                user.getUsername(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getPhoneNumber(),
+                user.getEmail(),
+                user.getAddress(), //todo: from address to str
+                user.getCard()); //todo: from card to str
+
+        executeStatementUpdate(strSql);
+
     }
 }

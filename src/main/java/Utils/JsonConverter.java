@@ -1,7 +1,13 @@
 package Utils;
 
+import Users.Address;
+import Users.Card;
 import Users.User;
 import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class JsonConverter {
     public static JSONObject userToJson(User user) {
@@ -36,6 +42,43 @@ public class JsonConverter {
         jsonObject.put("user", userJobject);
 
         return jsonObject;
+    }
+
+    public static User jsonToUser(String json) {
+        JSONObject jsonObject = new JSONObject(json);
+
+        JSONObject jsonUser = jsonObject.getJSONObject("user");
+
+        String username = jsonUser.getString("username");
+        String firstName = jsonUser.getString("firstName");
+        String lastName = jsonUser.getString("lastName");
+        String phoneNumber = jsonUser.getString("phoneNumber");
+        String email = jsonUser.getString("email");
+
+        JSONObject jsonAddress = jsonUser.getJSONObject("address");
+        String streetName = jsonAddress.getString("streetName");
+        String number = jsonAddress.getString("number");
+        String city = jsonAddress.getString("city");
+        String country = jsonAddress.getString("country");
+        String zipcode = jsonAddress.getString("zipcode");
+
+        JSONObject jsonCard = jsonUser.getJSONObject("card");
+        String id = jsonCard.getString("id");
+        String cardNumber = jsonCard.getString("cardNumber");
+        String expirationDateStr = jsonCard.getString("expirationDate");
+
+        Address address = new Address(streetName, number, city, country, zipcode);
+
+        Date expirationDate;
+        try {
+            expirationDate = new SimpleDateFormat("yyyy-MM-dd").parse(expirationDateStr);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+
+        Card card = new Card(Long.parseLong(id), cardNumber, expirationDate);
+
+        return new User(null, username, firstName, lastName, phoneNumber, email, address, card);
     }
 
     public static boolean checkJsonIsValidAddNewUser (String body) {
@@ -112,6 +155,7 @@ public class JsonConverter {
 
         return true;
     }
+
 
     // TODO: delete later after testing
 //    public String test () {

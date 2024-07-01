@@ -43,6 +43,8 @@ public class Requests {
         boolean validJson = JsonConverter.checkJsonIsValidAddNewUser(body);
 
         if (validJson) {
+            User newUser = JsonConverter.jsonToUser(body);
+
             // TODO: finish to add new user in database
 
 
